@@ -27,3 +27,20 @@ var kthDistinct = function(arr, k) {
 
   return count === 1 ? kth : '';
 };
+
+
+Solution 2
+
+var kthDistinct = function(arr, k) {
+    const maps = new Map();
+    arr.forEach((k) => {
+      maps.set(k, maps.has(k) ? maps.get(k) + 1 : 1);  
+    });
+    
+    return [...maps].filter(m => m[1] === 1)[k-1]?.[0] || '';
+    
+};
+
+console.log(kthDistinct(["d","b","c","b","c","a"], 2))
+console.log(kthDistinct(["aaa","aa","a"], 1))
+console.log(kthDistinct(["a","b","a"], 3))
