@@ -14,8 +14,47 @@
  *
  * Return the difference matrix diff.
  */
+//solution one.
+
+function differenceMatrix(grid) {
+    const m = grid.length;
+    const n = grid[0].length;
+
+    const onesRow = Array(m).fill(0);
+    const zerosRow = Array(m).fill(0);
+    const onesCol = Array(n).fill(0);
+    const zerosCol = Array(n).fill(0);
+
+    // Count ones and zeros in each row and column
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            if (grid[i][j] === 1) {
+                onesRow[i]++;
+                onesCol[j]++;
+            } else {
+                zerosRow[i]++;
+                zerosCol[j]++;
+            }
+        }
+    }
+
+    // Create the diff matrix
+    const diff = Array.from({ length: m }, () => Array(n).fill(0));
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            diff[i][j] = onesRow[i] + onesCol[j] - zerosRow[i] - zerosCol[j];
+        }
+    }
+
+    return diff;
+}
+
+// Example usage
+const grid = [[0,1,1],[1,0,1],[0,0,1]];
+console.log(differenceMatrix(grid)); // Output: [[0,0,4],[0,0,4],[-2,-2,2]]
 
 /**
+solution2
  * @param {number[][]} grid
  * @return {number[][]}
  */
