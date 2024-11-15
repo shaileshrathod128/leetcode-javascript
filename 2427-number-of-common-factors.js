@@ -20,3 +20,19 @@ var commonFactors = function(a, b) {
   }
   return count;
 };
+
+
+solution 2
+
+function commonFactors(a, b) {
+    const min = Math.min(a, b);
+    let count = 0;
+
+    for (let i = 1; i <= min; i++) {
+        if (a % i === 0 && b % i === 0) {
+            count++;
+        }
+    }
+
+    return count;
+}
