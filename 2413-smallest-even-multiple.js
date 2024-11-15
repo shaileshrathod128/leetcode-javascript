@@ -13,3 +13,10 @@
 var smallestEvenMultiple = function(n) {
   return n * (n % 2 + 1);
 };
+
+
+solution 2
+
+function smallestMultiple(n) {
+    return n % 2 === 0 ? n : n * 2;
+}
