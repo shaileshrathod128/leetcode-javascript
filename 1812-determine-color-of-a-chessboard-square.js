@@ -20,3 +20,21 @@ var squareIsWhite = function(coordinates) {
   const [x, y] = coordinates;
   return (x.charCodeAt() + +y) % 2 !== 0;
 };
+
+solution 2
+
+var squareIsWhite = function(coordinates) {
+    const startBlackChar = ['a', 'c', 'e', 'g'];
+    const coords = coordinates.split('');
+
+    if(startBlackChar.includes(coords[0])){
+        return coords[1] % 2 === 0 ? true : false;
+    } else {
+        return coords[1] % 2 === 0 ? false : true;
+    }
+
+    
+};
+
+// console.log(findingUsersActiveMinutes([[0,5],[1,2],[0,2],[0,5],[1,3]], 5));
+console.log(squareIsWhite("c7"))
