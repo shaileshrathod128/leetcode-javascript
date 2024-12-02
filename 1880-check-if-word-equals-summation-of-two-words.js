@@ -32,3 +32,20 @@ var isSumEqual = function(firstWord, secondWord, targetWord) {
 
   return a + b === c;
 };
+
+solution 2
+
+var isSumEqual = function(firstWord, secondWord, targetWord) {
+
+    const alphabets = 'abcdefghijklmnopqrstuvwxyz';
+    const getSum = (word) => {
+        return word.split('').reduce((a,b) => a + (alphabets.indexOf(b)), '')
+    }
+    const fSum = getSum(firstWord);
+    const sSum = getSum(secondWord);
+
+    return +fSum + +sSum === +getSum(targetWord);
+    
+};
+
+console.log(isSumEqual("aaa", "a", "aab"));
