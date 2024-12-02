@@ -24,3 +24,33 @@ var totalMoney = function(n) {
   }
   return result;
 };
+
+
+solution 2
+
+var totalMoney = function(n) {
+    const week = [1,2,3,4,5,6,7];
+    
+    const recur = (t, co = 0) => {
+        const nWeek = (t < week.length ? week.splice(0, t) : week);
+        // console.log(nWeek)
+        return nWeek.reduce((a,b) => a+b + co,0);
+    }
+    let total = 0;
+    if(n<week.length){
+        return recur(n);
+    } else {
+        
+        for(let i=0;i<Math.floor(n/week.length);i++){
+            total += recur(7, i);
+        }
+
+        total += recur(n%7, Math.floor(n/7));
+    }
+
+    return total;
+};
+
+console.log('tat',totalMoney(4));
+console.log('tat', totalMoney(10));
+console.log('tat', totalMoney(20));
