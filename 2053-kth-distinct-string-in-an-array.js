@@ -44,3 +44,21 @@ var kthDistinct = function(arr, k) {
 console.log(kthDistinct(["d","b","c","b","c","a"], 2))
 console.log(kthDistinct(["aaa","aa","a"], 1))
 console.log(kthDistinct(["a","b","a"], 3))
+
+
+
+Solution 3
+
+var kthDistinct = function(arr, k) {
+    const dist = [];
+    for(let i=0;i<arr.length;i++){
+        if(!dist.includes(arr[i])){
+            dist.push(arr[i]);
+        } else {
+            dist.splice(dist.indexOf(arr[i]), 1);
+        }
+    }
+    return dist[k-1] ?? ''
+};
+
+console.log(kthDistinct(["a","b","a"], 3));
