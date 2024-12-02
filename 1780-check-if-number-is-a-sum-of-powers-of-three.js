@@ -22,3 +22,17 @@ var checkPowersOfThree = function(n) {
   }
   return 1;
 };
+
+
+solution 2
+
+function checkPowersOfThree(n) {
+  // Iterate until n becomes 0
+  while (n > 0) {
+    if (n % 3 === 2) {
+      return false; // If a remainder of 2 exists, it's not possible to represent n
+    }
+    n = Math.floor(n / 3); // Reduce n by dividing it by 3
+  }
+  return true; // If n becomes 0, the representation is possible
+}
