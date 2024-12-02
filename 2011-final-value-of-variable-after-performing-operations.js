@@ -22,3 +22,13 @@ var finalValueAfterOperations = function(operations) {
     .map(n => n.includes('++') ? 1 : -1)
     .reduce((sum, n) => sum + n, 0);
 };
+
+
+
+Solution 2
+
+var finalValueAfterOperations = function(operations) {
+    return operations.reduce((a, op) => a + (op.includes('--') ? -1 : 1), 0)
+};
+
+console.log(finalValueAfterOperations(["--X","X++","X++"]));
