@@ -17,3 +17,15 @@
 var checkIfPangram = function(sentence) {
   return new Set([...sentence]).size === 26;
 };
+
+
+solution 2
+
+
+var checkIfPangram = function(sentence) {
+    const alphabets = 'abcdefghijklmnopqrstuvwxyz';
+
+    return alphabets.split('').every((char) => sentence.indexOf(char) !== -1)
+};
+
+console.log(checkIfPangram("thequickbrownfoxjumpsoverthelazydog"));
