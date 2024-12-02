@@ -33,3 +33,11 @@ function rotate(matrix) {
 
   return matrix;
 }
+
+solution 2
+
+var findRotation = function(mat, target) {
+    return mat.reverse().every((arr, ind) => arr.join('') === target[ind].join(''));
+};
+
+console.log(findRotation([[0,1],[1,0]],[[1,0],[0,1]]));
