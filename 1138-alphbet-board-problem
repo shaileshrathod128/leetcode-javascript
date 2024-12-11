@@ -1,0 +1,78 @@
+On an alphabet board, we start at position (0, 0), corresponding to character board[0][0].
+
+Here, board = ["abcde", "fghij", "klmno", "pqrst", "uvwxy", "z"], as shown in the diagram below.
+
+We may make the following moves:
+
+'U' moves our position up one row, if the position exists on the board;
+'D' moves our position down one row, if the position exists on the board;
+'L' moves our position left one column, if the position exists on the board;
+'R' moves our position right one column, if the position exists on the board;
+'!' adds the character board[r][c] at our current position (r, c) to the answer.
+(Here, the only positions that exist on the board are positions with letters on them.)
+
+Return a sequence of moves that makes our answer equal to target in the minimum number of moves.  You may return any path that does so.
+
+ 
+
+Example 1:
+
+Input: target = "leet"
+Output: "DDR!UURRR!!DDD!"
+Example 2:
+
+Input: target = "code"
+Output: "RR!DDRR!UUL!R!"
+ 
+
+Constraints:
+
+1 <= target.length <= 100
+target consists only of English lowercase letters.
+
+
+
+var alphabetBoardPath = function(target) {
+    const moves = [];
+    let i=0;
+    let j = 0;
+    const alphabets= "abcdefghijklmnopqrstuvwxyz";
+    const letters = {};
+    for(let k=0; k<26;k++){
+      if(!letters[alphabets[k]]){
+        letters[alphabets[k]] = [Math.floor(k/5), k%5];
+      }
+    }
+    for(let letter of target.split('')){
+      const [next_i, next_j] = letters[letter];
+      const zindex = letters['z'];
+      if((next_i, next_j) == (zindex[0], zindex[1]) && letter != 'z'){
+        moves.push('U');
+        i--;
+      }
+      while(i != next_i){
+        if(i < next_i){
+          moves.push('D');
+          i++;
+        } else {
+          moves.push('U')
+          i--;
+        }
+      }
+      while(j != next_j){
+        if(j < next_j){
+          moves.push('R');
+          j++;
+        } else {
+          moves.push('L')
+          j--;
+        }
+      }
+      
+      moves.push('!')
+    }
+  console.log(moves)
+  return moves;
+};
+
+console.log(alphabetBoardPath('zip'));
